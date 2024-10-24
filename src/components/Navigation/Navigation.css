@@ -1,0 +1,34 @@
+.navigation-component {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1em 2em;
+    background-color: #2222221f;
+}
+
+.website-logo {
+    width: 50px;
+    height: 50px;
+}
+
+.navigation-right-section {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.nav-section {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-section a {
+    text-decoration: none;
+}
+
+.nav-section li {
+    list-style-type: none;
+    text-transform: uppercase;
+    color: #222;
+}

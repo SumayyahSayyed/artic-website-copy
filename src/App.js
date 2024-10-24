@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
 
+// COMPONENTS
+import Navigation from './components/Navigation/Navigation';
+import SecondNavigation from './components/SecondNavigation/SecondNavigation';
+import HeroSection from './components/HeroSection/HeroSection';
+
+
+// import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
+
+
 function App() {
+
   return (
+    // <LocomotiveScrollProvider
+    //   options={{ smooth: true, }}
+    //   watch={[]}
+    //   containerRef={containerRef}
+    // >
+    //   <main data-scroll-container ref={containerRef}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div id="scroll-container" className='scroll-containers'>
+        <Navigation />
+
+        <HeroSection />
+        <SecondNavigation />
+      </div>
     </div>
+    // </main>
+    // </LocomotiveScrollProvider>
   );
 }
 
