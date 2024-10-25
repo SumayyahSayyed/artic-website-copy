@@ -35,3 +35,8 @@
     text-transform: uppercase;
     color: #222;
 }
+
+.nav-section-active li {
+    color: blue;
+    font-weight: 500;
+}

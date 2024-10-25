@@ -1,24 +1,7 @@
 .second-navigation-component {
     /* overflow: hidden; */
     padding: 1em 2em;
-}
-
-.second-navigation-sections {
-    margin-top: 30px;
-    height: 100vh;
-}
-
-.all-sections {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 20px;
-    /* width: 100vw;
-    width: 100%; */
-
-}
-
-.sections {
-    padding: 1em 2em;
-    min-width: 90%;
-    margin: auto;
+    height: min-content;
+    min-height: 30px;
+    border-bottom: 1px solid #222;
 }

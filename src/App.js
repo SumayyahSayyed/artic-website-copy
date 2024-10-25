@@ -23,6 +23,8 @@ function App() {
   const [pageContainer, setPageContainer] = useState();
   const [scroller, setScroller] = useState();
 
+  const [secondNavItems, setSecondNavItems] = useState()
+
 
   useLayoutEffect(() => {
     const page = document.querySelector(".container");
@@ -38,16 +40,23 @@ function App() {
     }
   }, [pageContainer])
 
+  const getSecondNavItems = (items) => {
+    setSecondNavItems(items)
+  }
+
   return (
     // <LocomotiveScrollProvider options={options} containerRef={ref} watch={[]}
     //   onUpdate={(scroll) => {
     //     locomotiveScrollRef.current = scroll;
     //   }}>
     <main data-scroll-container ref={ref} className='container'>
-      <Navigation />
+      <Navigation getSecondNavItems={getSecondNavItems} />
+      {
+        secondNavItems &&
+        <SecondNavigation secondNavItems={secondNavItems} />
+      }
 
       <HeroSection />
-      {/* <SecondNavigation pageContainer={pageContainer} scroller={scroller} /> */}
       <GSAPHorizontalScroll pageContainer={pageContainer} scroller={scroller} />
     </main>
     // </LocomotiveScrollProvider>

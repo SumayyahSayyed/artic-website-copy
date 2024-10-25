@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navigation.css';
 
 import Logo from "../../assets/logo.png";
 
-const Navigation = () => {
+const Navigation = ({ getSecondNavItems }) => {
+    const [active, setActive] = useState('media');
     const navItems = [
         {
             name: 'About',
@@ -23,7 +24,21 @@ const Navigation = () => {
         {
             name: 'Media',
             route: '/media',
-            dropDown: ''
+            dropDown: '',
+            secondNavItems: [
+                {
+                    name: 'News',
+                    route: '/media/news'
+                },
+                {
+                    name: 'Press Release',
+                    route: '/media/press-release'
+                },
+                {
+                    name: 'Video Gallery',
+                    route: '/media/video-gallery'
+                }
+            ]
         },
         {
             name: 'Contact',
@@ -31,8 +46,19 @@ const Navigation = () => {
             dropDown: ''
         }
     ]
+
+
+    const updateActiveNaveElement = (data) => {
+        setActive(data)
+
+        const selectedNavElement = navItems.find(nav => data === nav.name);
+        if (selectedNavElement.secondNavItems) {
+            getSecondNavItems(selectedNavElement.secondNavItems);
+        } else {
+            getSecondNavItems(null)
+        }
+    }
     return (
-        // <div data-scroll-section>
         <div className='navigation-component'>
             {/* LOGO */}
             <img className='website-logo' src={Logo} alt="website-logo" />
@@ -43,7 +69,7 @@ const Navigation = () => {
                 <ul className='nav-section'>
                     {
                         navItems.map((navItem, index) => (
-                            <a href="#"><li key={index}>{navItem.name}</li></a>
+                            <a key={index} href="#" className={active === navItem.name && 'nav-section-active'} onClick={() => updateActiveNaveElement(navItem.name)}><li>{navItem.name}</li></a>
                         ))
                     }
                 </ul>
@@ -55,7 +81,6 @@ const Navigation = () => {
             </div>
 
         </div>
-        // </div>
     )
 }
 
