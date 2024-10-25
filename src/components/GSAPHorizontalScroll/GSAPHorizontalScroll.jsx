@@ -1,17 +1,61 @@
-import React, { useEffect, useRef } from 'react';
-import './SecondNavigation.css';
+import React, { useEffect } from 'react';
+import './GSAPHorizontalScroll.css';
 
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger)
 
-const SecondNavigation = ({ pageContainer, scroller }) => {
+const GSAPHorizontalScroll = ({ scroller, pageContainer }) => {
+
+    useEffect(() => {
+        if (scroller && pageContainer) {
+            scroller.on("scroll", ScrollTrigger.update);
+            ScrollTrigger.scrollerProxy(pageContainer, {
+                scrollTop(value) {
+                    return arguments.length
+                        ? scroller.scrollTo(value, 0, 0)
+                        : scroller.scroll.instance.scroll.y;
+                },
+                getBoundingClientRect() {
+                    return {
+                        left: 0,
+                        top: 0,
+                        width: window.innerWidth,
+                        height: window.innerHeight
+                    };
+                },
+                pinType: pageContainer.style.transform ? "transform" : "fixed"
+            });
+
+            window.addEventListener("load", function () {
+                let pinWrap = document.querySelector(".all-sections");
+                let pinWrapWidth = pinWrap.offsetWidth;
+
+                gsap.to(".gsap-scroll-sections", {
+                    scrollTrigger: {
+                        scroller: pageContainer,
+                        scrub: 2,
+                        trigger: ".gsap-scroll-component",
+                        pin: true,
+                        start: "top top",
+                        end: pinWrapWidth,
+                        markers: true,
+                    },
+                    xPercent: -100 * (document.querySelectorAll(".sections").length - 1),
+                    ease: "none"
+                });
+
+                ScrollTrigger.addEventListener("refresh", () => scroller.update()); //locomotive-scroll
+
+                ScrollTrigger.refresh();
+            });
+        }
+    }, [scroller, pageContainer])
 
     return (
-        <div data-scroll-container className='second-navigation-component'>
-            {/* <div data-scroll-section className='second-navigation-sections'>
+        <div data-scroll-container className='gsap-scroll-component'>
+            <div data-scroll-section className='gsap-scroll-sections'>
                 <div className='all-sections'>
                     <div className='sections' data-scroll data-scroll-delay="0.12" data-scroll-position="top">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum est a deleniti doloremque, tempora maxime officiis beatae mollitia, voluptatem, magni cumque illo aliquam porro expedita! Neque eum architecto consequatur ratione! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam voluptate optio soluta sed perferendis suscipit consequuntur distinctio sit perspiciatis? Laborum minus tempora aspernatur sed voluptates dolorem placeat eveniet provident eligendi.
@@ -111,10 +155,9 @@ const SecondNavigation = ({ pageContainer, scroller }) => {
                         Ipsam ratione vel explicabo, iste nesciunt animi nihil neque eaque voluptas perspiciatis natus id, molestias magni quo vero corporis, exercitationem dolores quod maxime ducimus! Ipsam voluptates eveniet magnam voluptas! Debitis!
                     </div>
                 </div>
-            </div> */}
+            </div>
         </div>
-
     )
 }
 
-export default SecondNavigation
+export default GSAPHorizontalScroll

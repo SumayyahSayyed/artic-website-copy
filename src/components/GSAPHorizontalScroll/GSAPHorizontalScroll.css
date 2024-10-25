@@ -1,9 +1,9 @@
-.second-navigation-component {
+.gsap-scroll-component {
     /* overflow: hidden; */
     padding: 1em 2em;
 }
 
-.second-navigation-sections {
+.gsap-scroll-sections {
     margin-top: 30px;
     height: 100vh;
 }

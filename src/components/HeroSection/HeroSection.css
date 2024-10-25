@@ -3,17 +3,22 @@
 
     max-width: 1500px;
     margin: auto;
-    min-height: 100vh;
+    /* min-height: 100vh; */
+
+    position: relative;
 }
 
 .hero-section-main-heading {
     font-size: 35px;
     font-weight: 400;
     color: #005DBD;
+    margin: 0;
 }
 
 .hero-section-main-para {
     font-size: 20px;
+    margin: 0;
+    margin-bottom: 20px;
 }
 
 .hero-section-one {
@@ -112,8 +117,32 @@
     font-weight: 300;
 }
 
+.hero-details-heading {
+    margin-top: 0;
+}
+
 .share-icon {
     padding: 0px 5px;
     border: 1px solid #656565;
     border-radius: 2px;
+}
+
+
+.hero-section-three {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.ceo-image {
+    width: 400px;
+    height: 300px;
+}
+
+
+.hero-section-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
 }
