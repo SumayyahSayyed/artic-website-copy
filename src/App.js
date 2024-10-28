@@ -10,6 +10,7 @@ import HeroSection from './components/HeroSection/HeroSection';
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import LocomotiveScroll from 'locomotive-scroll';
 import GSAPHorizontalScroll from './components/GSAPHorizontalScroll/GSAPHorizontalScroll';
+import TimeLapse from './components/TimeLapse/TimeLapse';
 
 
 function App() {
@@ -26,19 +27,19 @@ function App() {
   const [secondNavItems, setSecondNavItems] = useState()
 
 
-  useLayoutEffect(() => {
-    const page = document.querySelector(".container");
+  // useLayoutEffect(() => {
+  //   const page = document.querySelector(".container");
 
 
-    if (pageContainer) {
-      setScroller(new LocomotiveScroll({
-        el: pageContainer,
-        smooth: true
-      }))
-    } else {
-      setPageContainer(page);
-    }
-  }, [pageContainer])
+  //   if (pageContainer) {
+  //     setScroller(new LocomotiveScroll({
+  //       el: pageContainer,
+  //       smooth: true
+  //     }))
+  //   } else {
+  //     setPageContainer(page);
+  //   }
+  // }, [pageContainer])
 
   const getSecondNavItems = (items) => {
     setSecondNavItems(items)
@@ -56,8 +57,9 @@ function App() {
         <SecondNavigation secondNavItems={secondNavItems} />
       }
 
-      <HeroSection />
-      <GSAPHorizontalScroll pageContainer={pageContainer} scroller={scroller} />
+      {/* <HeroSection /> */}
+      <TimeLapse />
+      {/* <GSAPHorizontalScroll pageContainer={pageContainer} scroller={scroller} /> */}
     </main>
     // </LocomotiveScrollProvider>
   );

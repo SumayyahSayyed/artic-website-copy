@@ -1,0 +1,105 @@
+.time-lapse-section {
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    gap: 3px;
+
+    padding: 1em 2em;
+}
+
+.time-lapse-images-section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    perspective: 800px;
+}
+
+.selected-year {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 200px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.time-lapse-image {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.time-lapse-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.time-lapse-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: -1px 0 7.5px 1px rgba(55, 55, 55, 0.45), inset 1px -4px 16px 10.5px rgba(66, 66, 66, 0.19);
+    z-index: 1;
+}
+
+.time-lapse-image:nth-child(1) {
+    width: 200px;
+    height: 200px;
+    left: 30%;
+    top: 30%;
+}
+
+.time-lapse-image:nth-child(2) {
+    width: 250px;
+    height: 250px;
+    right: 10%;
+    bottom: 15%;
+}
+
+.time-lapse-image:nth-child(3) {
+    width: 300px;
+    height: 300px;
+    left: 10%;
+    bottom: 10%;
+}
+
+.year-dash {
+    width: 25px;
+    height: 3px;
+    border: 1px solid #222;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.year-dash.selected {
+    background-color: #005dbd;
+}
+
+.years-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.year-indication-plus-list {
+    display: flex;
+}
+
+.year-indicator-arrow {
+    transform: translateY(225px);
+}

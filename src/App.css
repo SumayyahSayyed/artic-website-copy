@@ -13,6 +13,10 @@
   color: white;
 } */
 
+.container {
+  font-family: "Manrope", sans-serif;
+}
+
 html.has-scroll-smooth {
   overflow: hidden;
 }
